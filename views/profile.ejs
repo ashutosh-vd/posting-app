@@ -9,7 +9,6 @@
 <body class="h-screen w-full bg-zinc-900 text-white">
 	<div class="flex justify-between pt-2 px-1">
 		<div>
-<<<<<<< HEAD
 			<img src="/images/uploads/<%= user.avatar %>" alt="" srcset="" class="w-32">
 			<h3 class="text-3xl">Hello, Loggedin User <%= user.username %></h3>
 		</div>
@@ -17,13 +16,6 @@
 	</div>
 	<h3 class="text-sm text-zinc-400 px-1">Create a New post</h3>
 	<a href="/<%= user._id %>/pfp">Change profile picture</a>
-=======
-			<h3 class="text-3xl">Hello, Loggedin User <%= user.username %></h3>
-		</div>
-		<a class="inline-block px-1 bg-red-600 border border-red-800 rounded-md hover:bg-red-800 mt-2 font-bold" href="/logout">Logout</a>
-	</div>
-	<h3 class="text-sm text-zinc-400 px-1">Create a New post</h3>
->>>>>>> refs/remotes/origin/main
 	<form action="/post/<%= user._id %>" method="post" class="mt-2 flex flex-col w-1/3 gap-2">
 		<textarea name="content" placeholder="What's on your mind?" 
 		class="h-32 w-full resize-none border-1 outline-none border-zinc-700 p-2"></textarea>
@@ -31,7 +23,6 @@
 	</form>
 	<h2 class="text-xl mt-3">All Posts Here</h2>
 	<div class="postcontainer p-2 mt-1 w-1/2 flex flex-col gap-2">
-<<<<<<< HEAD
 		<% posts.reverse().forEach((post) => { %>
 			<div class="post border-1 rounded border-zinc-600 p-2">
 				<div class="flex justify-between">
@@ -41,20 +32,11 @@
 						<h4 class="text-xs text-zinc-400 mt-3"><%= post.likes.length %> likes</h4>
 					</div>
 					<div class="">
-						<img src="/images/uploads/<%= user.avatar %>" alt="" srcset="" class="h-16">
+						<img src="/images/uploads/<%= post.user.avatar %>" alt="" srcset="" class="h-16">
 					</div>
 				</div>
 				<div class="flex justify-between">
 					<div class="flex gap-2 bg-zinc-800 text-sm">
-=======
-		<% posts.forEach((post) => { %>
-			<div class="post border-1 rounded border-zinc-700 p-2">
-				<h2 class="text-sm text-blue-500">@<%= post.user.username %></h2>
-				<p class="contents mt-2" ><%= post.content %></p>
-				<h4 class="text-xs text-zinc-400 mt-3"><%= post.likes.length %> likes</h4>
-				<div class="flex justify-between">
-					<div class="flex gap-2 bg-transparent text-sm">
->>>>>>> refs/remotes/origin/main
 						<a href="/like/<%= post._id %>" class="text-blue-500">
 							<%= (post.likes.indexOf(user._id) == -1 ? "Like" : "Unlike") %>
 						</a>
