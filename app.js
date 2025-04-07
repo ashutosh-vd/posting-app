@@ -147,6 +147,7 @@ app.get('/like/:id', isLoggedin, async (req, res) => {
 	res.redirect('/profile');
 })
 
+<<<<<<< HEAD
 app.get('/:id/pfp', isLoggedin, async (req, res) => {
 	const user  = await usermodel.findOne({_id : req.params.id});
 	res.render('pfp', {user : user});
@@ -161,6 +162,8 @@ app.post('/:id/pfp', isLoggedin, upload.single('uploaded_pfp'), async (req, res)
 	res.redirect('/profile')
 })
 
+=======
+>>>>>>> refs/remotes/origin/main
 app.listen(3000, (err) => {
 	if(err) 
 		throw err;
