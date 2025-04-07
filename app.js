@@ -18,6 +18,7 @@ app.use(express.urlencoded({extended: true}));
 const { upload } = require('./configs/multer'); // multer config
 
 const path = require('path');
+const { runInNewContext } = require('vm');
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/', (req, res) => {
@@ -146,9 +147,18 @@ app.get('/like/:id', isLoggedin, async (req, res) => {
 	res.redirect('/profile');
 })
 
-app.get('/:id/profile-picture', isLoggedin, async (req, res) => {
+app.get('/:id/pfp', isLoggedin, async (req, res) => {
 	const user  = await usermodel.findOne({_id : req.params.id});
-	res.render('edit_dp', {user : user});
+	res.render('pfp', {user : user});
+})
+
+app.post('/:id/pfp', isLoggedin, upload.single('uploaded_pfp'), async (req, res) => {
+	const user  = await usermodel.findOne({_id : req.params.id});
+	console.log(req.file);
+	if(!req.file) return res.send("Something Wrong With file");
+	user.avatar = req.file.filename;
+	await user.save();
+	res.redirect('/profile')
 })
 
 app.listen(3000, (err) => {

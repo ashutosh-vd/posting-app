@@ -9,12 +9,15 @@
 <body class="h-screen w-full bg-zinc-900 text-white">
 	<div class="flex justify-between pt-2 px-1">
 		<div>
-			<img src="images/uploads/default.jpg" alt="TATA" class="w-32">
+			<img src="/images/uploads/<%= user.avatar %>" alt="" srcset="" class="w-32">
 			<h3 class="text-3xl">Hello, Loggedin User <%= user.username %></h3>
 		</div>
-		<a class="inline-block px-1 bg-red-600 border border-red-800 rounded-md hover:bg-red-800 mt-2 font-bold" href="/logout">Logout</a>
+		<a class="h-8 inline-block px-1 bg-red-600 border border-red-800 rounded-md hover:bg-red-800 mt-2 font-bold" href="/logout">Logout</a>
 	</div>
 	<h3 class="text-sm text-zinc-400 px-1">Update Profile Picture</h3>
-	
+	<form action="/<%= user._id %>/pfp" method="post" enctype="multipart/form-data" class="flex gap-2">
+		<input type="file" name="uploaded_pfp" class="border-1 border-zinc-600 outline-none p-2">
+		<button type="submit" class="p-2 rounded bg-blue-800">update profile picture</button>
+	</form>
 </body>
 </html>

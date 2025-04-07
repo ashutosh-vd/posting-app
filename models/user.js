@@ -11,6 +11,10 @@ const userSchema = mongoose.Schema({
 		type: mongoose.Schema.Types.ObjectId,
 		ref: 'post',
 	}],
+	avatar: {
+		type: String,
+		default: "default.jpg"
+	},
 })
 
 module.exports = mongoose.model('user', userSchema);
